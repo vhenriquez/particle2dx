@@ -708,23 +708,23 @@ $plist_64=base64_encode($plist_temp);
 <div id="topleft_pane_template" style="display:none;" >
 	<table>
 	<?php 
-	foreach (array("BG","Water","Fire","FireWorks","Explosion","Meteor","Snow","Click","Smoke","Magic") as $val) { 
+	foreach (array("BG","Water","Fire","FireWorks","Explosion","Meteor","Snow","Click","Smoke","Magic","Others") as $val) { 
 		
 		echo "<tr><td>";
 		echo "<strong>".$val."</strong>";
 		echo "</td><td>";
 
-		$ary=explode("\n", trim(`ls plist | grep -i '${val}_' | grep -i 'plist'`));
-		foreach ($ary as $val1){ ?>
-			<a href="javascript:getPlist('<?php echo $val1 ?>')" onMouseOver="prevParticle('<?php echo $val1?>');" onMouseOut="prevEnd(); " ><?php echo preg_replace("/(.*?_)(.*)(\..*)/","$2",$val1) ?></a>
+		$ary=explode("\n", trim(`ls plist/${val} | grep -i 'plist'`));
+		foreach ($ary as $val1){  ?>
+			<a href="javascript:getPlist('<?php echo "$val/$val1" ?>')" onMouseOver="prevParticle('<?php echo "$val/$val1"?>');" onMouseOut="prevEnd(); " ><?php echo preg_replace("/(.*?_)(.*)(\..*)/","$2",$val1) ?></a>
 		<?php } ?>
 		</td><td>
 		 MultiEmitter 
 		<?php		
 		$ary2=array();
-		$ary2=explode("\n", trim(`ls plist | grep -i '${val}_' | grep -i 'p2dx'`));
+		$ary2=explode("\n", trim(`ls plist/${val} | grep -i 'p2dx'`));
 		foreach ($ary2 as $val2){
-			echo '<a href="javascript:getP2dx('."'".$val2."'".')">'.preg_replace("/\..*/","",$val2)."</a> ";
+			echo '<a href="javascript:getP2dx('."'"."$val/$val2"."'".')">'.preg_replace("/\..*/","",$val2)."</a> ";
 		}
 		echo "</td></tr> ";
 	} 
