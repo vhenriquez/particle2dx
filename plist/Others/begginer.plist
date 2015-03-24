@@ -99,8 +99,8 @@
 <real>-2321.05</real>
 <key>radialAccelVariance</key>
 <real>381.58</real>
-<key>textureImageData</key>
-<string>H4sIAAAAAAAAAxVUa1CTRxS9XwiPRIhMHCtgIegQCWpCp8ViEEK0KAQVqKJIMxJ809ICBgkqIfmECqWWChFhkKSBGW21UiJEgQINzKBtNZWgRSgBTWLBiLwTHn6C0u2P3Ttz9+w5Z8+d2aK4mEg3qhcVANwEURF7UMX/Xy5OaO/kHdKjQsmISswEcC4CIPtj+vrsfABHqiBia/xpbFw1kjbAd89XJU0utbEV8a4dEfXMxFbjEdqE+qR34hWL9Ooj2J4erOqhtpmv7vednprUE+cJ+Ub/elpApFxIc1oCCJRxnPf560gavaVMDWY3JnasSDgijXntBm03/KqDpl8ZCeUEBot8Af/M854ca2bDbpj6hIkxbaImpeGGBOtwjCY9GGqa4KpXeJPwC2XksgeiMDHvpzNU4MTT4zjhs5V27v0AyKhX4Ip+zQmlISDGAV/OorCqnp7tJZTVLiCNEvBHxp7QrdqFwzC1lYkNa/fuVBm6bkJH4WVyWYbsl5O81jonCI6jx/1+5k4vMfaaDs1FCnzP95oEpSEt0AFfHUBhWZvPPiHGblOguRJJzWnYSgOnCsNXr6ewUtuND4ixWwHQfEOBP27UsFWGiSvo1gYKK73VaCTGapdB868KnC7ShCkNdS0Y7owMZuaOD0slPSshNMI97pXNmEO8vL4FTn+jo1Vv6x/xXBiNKQDceT2lt4HR7mORSj5whdA4Ab9/fpRl1ebXgLkmmhS9dCAyRB3LoIFPrV/1oijrtp0YCgCzJZpUZ5ZUWaS8XC9I4QsyWh+KdRTovjs5fKvyy1mT+LghdBO2WbrDZeNGxpsqgOLFRNoXBfZs7v4XQQ5Avl9C3q+Mhd0Y/uNa/3NMa5UjFG/fRUrtCnaDK2gK76nSfSDIYw2lNsTkCCmPM+kHJLrV0LbNfIjo7h00kaJe5M7OZCWHzfUZWzDYnfM6ZOq5dJuZCkFfcSmhXBMbUgYP009n6lKhu+2a39RL6TwkwzKB+QmxBjrcP7rUobV3Ar71uN+5bGshCTq/25Xn0rXcGZy8SsmfKhl0/Jl7hJA3I56/4KvIic+Rekd8+/aOZA3WgbPbaWtD1O5fO4JDY1Te9a5YDAraFORSldoJXD+7RH6kUlPBVaggeyrVNHCVrqM0bA5ngscbFuVDbjgbPKQbKA3c8E3gIVORPVWxsGdJYxEK+IcaenrgaPHbTYM18hXNPjPvsl78I0otpQN3adm5U/AnIdL/cTMeVVMFEuAunSQ+hxJ7U4WaBFy5nLBgJfaLFQwvdELYOkm+VrVQFgVDi3b9cme8XNS4GAesOX0Fwwm47WkohBL7aMWkD0IbbQcdfK0ikU6I0B/rsym40pRGTCDAAMe0EsSyheFWjN81qZWughTibTmazD2ZabjKCfXapVpk6Eh5OnIpH7Q9xHytFw/qAhDRtD7YAVeGnyDWQbfNypaHgEZfuUX3A2+cUahjR9oMCclUEL9bvKfNtyCKsmc7vKm4Mv3IyCinALFojjXZz7qAWKc6b8p+7I1sJomF8gkqXp6e2i98esqBX9/ObPptvgV8rQPCmaTIh+j581cbCdleGJJW7eS9+tkT0Zf+JZH3koFrmshTZ0k8EU3l3Ua5jII6c2LDqQQ3XCnfkbTQF48kB0Rj/bQLiMYQPfpvy1pEw9jJHrEFoQSKamV1YY64cvJEzTUVz5HfFXi5p2+2EPnWlSf+Pc5BkGLlO54WRTeZXnrHOxy56osesWeaUIq5nOnoPjXCJhydWehf9X77+E37BmpboDV8X+Lc+qND99H3CCDYHhNRty057z/8tnfKWAUAAA==</string>
+<key>textureFileName</key>
+<string>pd163.png</string>
 <key>tangentialAccelVariance</key>
 <integer>0</integer>
 <key>particleLifespanVariance</key>
@@ -113,10 +113,10 @@
 <integer>90</integer>
 <key>maxRadius</key>
 <real>234.75</real>
-<key>sourcePositionx</key>
-<integer>0</integer>
-<key>sourcePositiony</key>
-<integer>0</integer>
 <key>yCoordFlipped</key>
 <integer>0</integer>
+<key>sourcePositionx</key>
+<real>320</real>
+<key>sourcePositiony</key>
+<real>482</real>
 </dict></plist>

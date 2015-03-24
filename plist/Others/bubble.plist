@@ -99,8 +99,8 @@
 <integer>0</integer>
 <key>radialAccelVariance</key>
 <integer>0</integer>
-<key>textureImageData</key>
-<string>H4sIAAAAAAAAA+sM8HPn5ZLiYmBg4PX0cAkC0iA2FwcbkOw1Or8XSDV7ujiGSExtnWDIdchBhDXd+cKxoCIe7otmx43EL5o9cE3KfRt45RhvT6902JSzW/If/P3e7OXG/aZRUKLh9pQVK7JLP0zfvCtA/eMndy+ZyTfEVK6uMLv6fJmQ6Ya1DRbKTC5Xzvp8dY5daljr+ObTVe+vS/pmfgjhzwrgrLPfw1h2gHsH03eRPYz3n736oNP4zxfoHAZPVz+XdU4JTQDjYp2lvAAAAA==</string>
+<key>textureFileName</key>
+<string>pd26.png</string>
 <key>tangentialAccelVariance</key>
 <integer>5</integer>
 <key>particleLifespanVariance</key>
@@ -113,10 +113,10 @@
 <integer>90</integer>
 <key>maxRadius</key>
 <integer>100</integer>
-<key>sourcePositionx</key>
-<integer>0</integer>
-<key>sourcePositiony</key>
-<integer>0</integer>
 <key>yCoordFlipped</key>
 <integer>0</integer>
+<key>sourcePositionx</key>
+<real>320</real>
+<key>sourcePositiony</key>
+<real>482</real>
 </dict></plist>

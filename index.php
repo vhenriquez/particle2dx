@@ -774,7 +774,7 @@ $plist_64=base64_encode($plist_temp);
 										   onMouseOver='prevTex("<?php echo $val?>");' 
 										   onMouseOut='prevMouseOut();' 
 			<?php if ($_SESSION['png_name']==$val) echo " style='font-weight:bold' "; ?>
-			><img src="png/<?php echo $val?>.png" alt="<?php echo $val ?>" /></a><?php			
+			><img src="png/<?php echo $val?>.png" width=55 height=50 alt="<?php echo $val ?>" /></a><?php			
 			$png_path= 'png/'.$val.'.png';
 			$png_binary=file_get_contents($png_path);
 			$gzip=gzencode($png_binary);

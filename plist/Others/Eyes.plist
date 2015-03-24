@@ -107,12 +107,12 @@
 <real>1380713222.774</real>
 <key>updatedAt</key>
 <real>1396525617.715</real>
-<key>sourcePositionx</key>
-<integer>0</integer>
-<key>sourcePositiony</key>
-<integer>0</integer>
 <key>yCoordFlipped</key>
 <integer>0</integer>
 <key>objectId</key>
 <string>524c03068b79598639000069</string>
+<key>sourcePositionx</key>
+<real>320</real>
+<key>sourcePositiony</key>
+<real>482</real>
 </dict></plist>

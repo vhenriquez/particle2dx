@@ -99,8 +99,8 @@
 <integer>0</integer>
 <key>radialAccelVariance</key>
 <integer>0</integer>
-<key>textureImageData</key>
-<string>H4sIAAAAAAAAAwFWBan6iVBORw0KGgoAAAANSUhEUgAAACoAAAAsCAYAAAATmipGAAAFHUlEQVRYCe2Za2xURRTHz933dtvt9t3SugvUWnzU4gO0RtBqglg+aBQ0xgQ1JtaESEggGhtDY1VMTD+JRL+pH0U/qIkNWkiNLZDQGlus0SrUsA01NVjtg+3udh+e/5S57Pt1txSik9yde+d1f/fMzDlnzirhcJiuhWRIB/nM9t1P3rD2lh2lxeXrLeaC+nTts6n3+jxnp2cuDP86Pvrpx5+9+0mqvkoyib66q7ttVZXzwJ1N9zYXFRanGkNz3dz8DA39ODAyOeXuePvQvp5EAyYEfXPfB/s3rt/8+qoqV6I+y1Y2OXWOTg1/1/la94tdsS+JA32n46MjmzZseWi5pRgLIp8h3f7Bb75++cCzW2UZcl3kA0/3e22tO1YMEiwQEBjAEsmmgmJNtra07YqsXMl7sIBJMqig2DhXek1KiEQ5WMAk6wQoVBB2tyy8WnIwgQ08AhR6Ml+bB+ouHA5RKBTkXJsxARPYACoUPpQ5HrQk9/mzdHzoKI2OfU9Bhtz7wltUYC0kq9lKOp0+56ElmwDVanEgvW3PXV45DWtupl/OjJCrroEqy2rIwrC5JsmmbqZcB0K/QDAQ1X3+4iyNu8doZm5a1GlZApj+9qdfcWkChST9iz7y+haiQH1+L/09+xd5PPNc5xH1aIPyQGBRrOGoDike1tXfSr39nzcJy/Rh95HwhuZNKZrHV53g9dje8Wh8RYqSN/a+T/fc8SArdQcvBwspSmZyatpS2JpZywQvx4bJNo1PjNE53nRzF2coGMyuf1o3LxlM49om6txzkNznz9DUhT+op++w2tRWUEQNq28i5GaWnF7Rk6LTkcFgpH9mp6mGl0CIVVg2KWfQYnsp3XXb/VRdUUvsnkWBAoitClVXXkesXshoMAnQAquNHNzPZLKQLsNplx+TM6hBb6ASexnpnToqK6mU44lcIYXsvA7rnevIWVsv1JOOJQpgG+vWIlsx6fXZ6dacQfUMCgmZTGaeYns0qKKQ1WKjyvIaqqt2iXqFy3DpWfkDMtONJAfOGRQDwOIYWVKhUPx6w5qEBM0mq5AoILWknHe9fCmmOVnSChc5rmbQyMGW8/5/0HxL978tUa/XIwSarZlMNQt5kSh2d/ONG9X3LLDHNME23edfEN6V9PbZ9+c2uXn9mvSoJIPV2Xz3wzTy8ylZRL0DXwhXr5HdNFgjWLKd23eL3GRkk3qlTKhKxDewNo9t3Uk/jJ6ggcFetWro9ADhkuk+/phSRwXb+zLhrKTSwbLP4Eg/zl7f5kWisEIwmXue76ISdkJOs2QnpyZoMeAX74Pdr66oo99+/4nWOBtFWzObXhar5EmbC1BE1bhlzpE6SMbCHhHOR0890k4ttz9Ak3+6CUeSEPudOrbt+BCAw9xmczS5xLZ0CkXoTwsoxAEnBZJbXdsgvCpX3fWEOJLf7+PtEyKz0UJFRQ4qL6laOuxlKM1LbEugiE/yoI9rPdsDttBmZ+kVsOtXJc5HQT74YbfDgYGfahQXb6YUPgI+HAkfCjbcq9G8g12Hh1tbtl0+86JWU0IgInqAJSFmvi77Tn418tL+J0TMQdWjCKIiPpm/xDJjssiL5ZLx8GABk+yggiLS23ey55CsWOkcLJHRZ3XqJdg1EcgFLCK9x45/2ZnfZSDFkDrHO/Hu2GgzesVJVA6FIOpV/2eDhEWe6O8bhFm0qDKYRaS8/H0jRkrywzsZKsORpDptMWx32kYxDZJOfUy7FX9U1dOKk6QB+BeWfuKDCAqHFwAAAABJRU5ErkJgghL+N51WBQAA</string>
+<key>textureFileName</key>
+<string>pd372.png</string>
 <key>tangentialAccelVariance</key>
 <integer>0</integer>
 <key>particleLifespanVariance</key>
@@ -113,10 +113,10 @@
 <real>239.18</real>
 <key>maxRadius</key>
 <integer>100</integer>
-<key>sourcePositionx</key>
-<integer>0</integer>
-<key>sourcePositiony</key>
-<integer>0</integer>
 <key>yCoordFlipped</key>
 <integer>0</integer>
+<key>sourcePositionx</key>
+<real>320</real>
+<key>sourcePositiony</key>
+<real>482</real>
 </dict></plist>
