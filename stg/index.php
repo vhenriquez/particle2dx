@@ -1,4 +1,4 @@
-<?
+<?php
 function strGray($str) { return "<span style='color:gray;'>".$str."</span>";}
 if ( !function_exists("gzdecode") ) {
     function gzdecode($data) {  return gzinflate(substr($data,10,-8)); } 
@@ -108,7 +108,7 @@ if (isset($_REQUEST['type'])) {
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
-	boxsize=<?=$boxsize?>;
+	boxsize=<?php=$boxsize?>;
 </script>
 <title>Particle2dx</title>
 <style>
@@ -118,12 +118,12 @@ if (isset($_REQUEST['type'])) {
 		font-size:80%;
 		background-color:#222222;	
 	}
-	<? if (preg_match("/chrome/i",$ua)) {?>
+	<?php if (preg_match("/chrome/i",$ua)) {?>
 	input{
 		background-color:#dddddd;
 		opacity:0.7;	
 	}
-	<? } ?>
+	<?php } ?>
 	h3{
 		color:white;
 		border-bottom:1px solid #444444;
@@ -162,7 +162,7 @@ if (isset($_REQUEST['type'])) {
 }(document, 'script', 'facebook-jssdk'));
 </script>
 
-<?
+<?php
 if (preg_match("/(iphone|ipod|android)/i",$ua)){
    	exit ("<span style='font-size:80px;'>
    			Sorry ,Particle2dx doesn't work on MobilePhone. <br/><br/>
@@ -342,16 +342,16 @@ $plist_64=base64_encode($plist_temp);
 <div id="background" style="display:none; " >							
 
 			<table id="palette_bg" cellspacing=1 border=0 ><tr>
-				    <? 
+				    <?php 
 				    for($i=3;$i<=15;$i=$i+3) { 
 				    	echo "<tr>";
 						for($j=3;$j<=15;$j=$j+3) { 
 							for($k=3;$k<=15;$k=$k+3) { 							    
 						?>
-						<td col="bg" title="#<?=dechex($i*256+$j*16+$k);?>" 
-						style="background-color:#<?=dechex($i*256+$j*16+$k);?>;width:8px;height:8px;font-size:6px;">&nbsp;
+						<td col="bg" title="#<?php=dechex($i*256+$j*16+$k);?>" 
+						style="background-color:#<?php=dechex($i*256+$j*16+$k);?>;width:8px;height:8px;font-size:6px;">&nbsp;
 						</td>
-						<?  }
+						<?php  }
 					    } 
 					    echo "</tr>";
 			        }
@@ -659,7 +659,7 @@ $plist_64=base64_encode($plist_temp);
 							document.form_post_dl.type.value='p2dx_json';
 							$('#p2dx_out').text(JSON.stringify(xmls)).html(); 
 							$('#p2dx_json').attr('value',JSON.stringify(xmls));  
-							document.form_post_dl.submit(); " style="font-size:120%;font-weight:bold;" >AllJson</a><?=strGray(' array of all emitter as JSON') ?>
+							document.form_post_dl.submit(); " style="font-size:120%;font-weight:bold;" >AllJson</a><?php=strGray(' array of all emitter as JSON') ?>
 		<br/><br/>
 
 		<form name="form_post_dl" method="post" >
@@ -682,7 +682,7 @@ $plist_64=base64_encode($plist_temp);
 					<img src='logo_cocos_arrow.png' />
 				</a>
 			</td><td colspan=2 >	
-				<span style="font-size:120%;"><?=strGray('PNG Contained') ?></span>
+				<span style="font-size:120%;"><?php=strGray('PNG Contained') ?></span>
 			</td></tr>
 			<tr><td>
 				<a href="javascript:downloadPlistNoImg(slot);">
@@ -707,7 +707,7 @@ $plist_64=base64_encode($plist_temp);
 
 <div id="topleft_pane_template" style="display:none;" >
 	<table>
-	<? 
+	<?php 
 	foreach (array("BG","Water","Fire","FireWorks","Explosion","Meteor","Snow","Click","Smoke","Magic") as $val) { 
 		
 		echo "<tr><td>";
@@ -716,11 +716,11 @@ $plist_64=base64_encode($plist_temp);
 
 		$ary=explode("\n", trim(`ls plist | grep -i '${val}_' | grep -i 'plist'`));
 		foreach ($ary as $val1){ ?>
-			<a href="javascript:getPlist('<?=$val1 ?>')" onMouseOver="prevParticle('<?=$val1?>');" onMouseOut="prevEnd(); " ><?=preg_replace("/(.*?_)(.*)(\..*)/","$2",$val1) ?></a>
-		<? } ?>
+			<a href="javascript:getPlist('<?php=$val1 ?>')" onMouseOver="prevParticle('<?php=$val1?>');" onMouseOut="prevEnd(); " ><?php=preg_replace("/(.*?_)(.*)(\..*)/","$2",$val1) ?></a>
+		<?php } ?>
 		</td><td>
 		 MultiEmitter 
-		<?		
+		<?php		
 		$ary2=array();
 		$ary2=explode("\n", trim(`ls plist | grep -i '${val}_' | grep -i 'p2dx'`));
 		foreach ($ary2 as $val2){
@@ -766,17 +766,17 @@ $plist_64=base64_encode($plist_temp);
 	</script>
 	
 	<table><tr><td id='textures'>
-		<?
+		<?php
 		$pngs= explode("\n",trim(`ls png/ | grep -i 'png'`));
 		foreach ($pngs as $val){
 			$val=preg_replace("/(.*)(\..*)/",'$1',trim($val)); 
-			?><a href='javascript:void(0)' onClick='setTex("<?=$val?>"); 
+			?><a href='javascript:void(0)' onClick='setTex("<?php=$val?>"); 
 													$("#textures").children("a").children("img").css("background-color",""); 
 													$(this).children("img").css("background-color","#aaaaff"); '
-										   onMouseOver='prevTex("<?=$val?>");' 
+										   onMouseOver='prevTex("<?php=$val?>");' 
 										   onMouseOut='prevMouseOut();' 
-			<? if ($_SESSION['png_name']==$val) echo " style='font-weight:bold' "; ?>
-			><img src="png/<?=$val?>.png" alt="<?=$val ?>" /></a><?			
+			<?php if ($_SESSION['png_name']==$val) echo " style='font-weight:bold' "; ?>
+			><img src="png/<?php=$val?>.png" alt="<?php=$val ?>" /></a><?php			
 			$png_path= 'png/'.$val.'.png';
 			$png_binary=file_get_contents($png_path);
 			$gzip=gzencode($png_binary);
@@ -842,15 +842,15 @@ $plist_64=base64_encode($plist_temp);
 		<div id="start_color" >startcol</div>	
 		
 		<table id="palette" cellspacing=1 border=0 ><tr>
-			    <? 
+			    <?php 
 			    for($i=3;$i<=15;$i=$i+3) { 
 			    	echo "<tr>";
 					for($j=3;$j<=15;$j=$j+3) { 
 						for($k=3;$k<=15;$k=$k+3) { 							    
 					?>
-					<td col="col" title="#<?=dechex($i*256+$j*16+$k);?>"  style="background-color:#<?=dechex($i*256+$j*16+$k);?>;width:8px;height:8px;font-size:6px;">&nbsp;
+					<td col="col" title="#<?php=dechex($i*256+$j*16+$k);?>"  style="background-color:#<?php=dechex($i*256+$j*16+$k);?>;width:8px;height:8px;font-size:6px;">&nbsp;
 					</td>
-					<?  }
+					<?php  }
 				    } 
 				    echo "</tr>";
 		        } ?>
@@ -1267,7 +1267,7 @@ $plist_64=base64_encode($plist_temp);
 			<table ><tr><td style="vertical-align:top;" >
 					Angle 
 					<span id="disp_angle">**</span> Speed <span id="disp_speed">**</span><br/>		
-					<canvas id="cv_angle" style="background-color:#333333; width:<?=$boxsize?>px; height:<?=$boxsize?>px;">
+					<canvas id="cv_angle" style="background-color:#333333; width:<?php=$boxsize?>px; height:<?php=$boxsize?>px;">
 					</canvas>
 	
 				
@@ -1373,7 +1373,7 @@ $plist_64=base64_encode($plist_temp);
 			</td><td style="vertical-align:top;">
 	
 				EmitArea <span id="emit_area">** x **</span><br/>
-				<canvas id="set_pos" style="background-color:#333333; width:<?=$boxsize?>px; height:<?=$boxsize?>px;">
+				<canvas id="set_pos" style="background-color:#333333; width:<?php=$boxsize?>px; height:<?php=$boxsize?>px;">
 				</canvas>
 				<br/>
 				<a href="javascript:emitter[slot].setPosVar(cc.p(0,0));     dumpToInputTag(slot);">0x0</a>
@@ -1433,7 +1433,7 @@ $plist_64=base64_encode($plist_temp);
 			</td><td style="vertical-align:top;">
 			
 				Gravity <span id="grav_01">** x **</span><br/>
-				<canvas id="grav_pad" style="background-color:#333333; width:<?=$boxsize?>px; height:<?=$boxsize?>px;">
+				<canvas id="grav_pad" style="background-color:#333333; width:<?php=$boxsize?>px; height:<?php=$boxsize?>px;">
 				</canvas>
 				<script>
 				    var cv_grav = document.getElementById('grav_pad');
@@ -1691,7 +1691,7 @@ $plist_64=base64_encode($plist_temp);
 							if (!$.isNumeric(this.value)) { alert('set number!'); return false; } 						
 							emitter[slot].setStartRadiusVar(parseFloat(this.value)); 
 							dumpToInputTag(); "> 					
-					<?=strGray("発生位置:px"); ?>	
+					<?php=strGray("発生位置:px"); ?>	
 			</td></tr>			
 			<tr><td>
 					MinRadius 
@@ -1711,7 +1711,7 @@ $plist_64=base64_encode($plist_temp);
 							if (!$.isNumeric(this.value)) { alert('set number!'); return false; } 						
 							emitter[slot].setEndRadius(parseFloat(this.value)); 
 							dumpToInputTag(); "> 	
-							<?=strGray("終了位置:px"); ?>
+							<?php=strGray("終了位置:px"); ?>
 			</td></tr>
 			<tr><td>
 					Rotate/Sec
@@ -1743,7 +1743,7 @@ $plist_64=base64_encode($plist_temp);
 						onChange="
 							if (!$.isNumeric(this.value)) { alert('set number!'); return false; } 						
 							emitter[slot].setRotatePerSecondVar(parseFloat(this.value)); 
-							dumpToInputTag(); "> 	<?=strGray("円周に沿った回転量"); ?>
+							dumpToInputTag(); "> 	<?php=strGray("円周に沿った回転量"); ?>
 
 					 	
 
@@ -1758,13 +1758,13 @@ $plist_64=base64_encode($plist_temp);
 				var slot=0;
 				var slot_bg=0;
 		
-				var png_gz_b64=<?=$json_gz_b64_png ?>;
-				var xml_base64='<?=$plist_64?>';
+				var png_gz_b64=<?php=$json_gz_b64_png ?>;
+				var xml_base64='<?php=$plist_64?>';
 				
 				var corona_base_json=$.ajax({ url: "particle/template_corona.json", async: false }).responseText;		
 				
 				var png_name=[];
-				png_name[slot]="<?=$_SESSION['png_name']?>";
+				png_name[slot]="<?php=$_SESSION['png_name']?>";
 				var emitter=[];
 				
 				$("input[type=range]").bind( 'mousedown' ,function(){ 
