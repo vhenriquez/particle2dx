@@ -329,11 +329,11 @@ $plist_64=base64_encode($plist_temp);
 									current_reso={'name':reso['name'],'x':reso['x'],'y':reso['y']};
 									
 									$('#Cocos2dGameContainer').css("width",parseInt(reso['x'] * scale)).css("height",parseInt(reso['y'] * scale));
-									$('#gameCanvas').css("width",parseInt(reso['x'] * scale)).css("height",parseInt(reso['y'] * scale));
+									$('#Cocos2dGameContainer').css("margin","0px");
+									$('#gameCanvas').css("width",parseInt(reso['x'] * scale)).css("height",parseInt(reso['y'] * scale)).css("position", "fixed");
 							    	cc.EGLView.getInstance().setDesignResolutionSize(parseInt(reso['x']),parseInt(reso['y']), cc.RESOLUTION_POLICY.SHOW_ALL);//エリア内仮想解像度
 
 
-									$('#Cocos2dGameContainer').css("margin","0px");
 
 							    	$("#canvas_size_x").html(reso['x'] + "x" + reso['y'] + " " + reso['name']);
 						    	} 
@@ -357,10 +357,7 @@ $plist_64=base64_encode($plist_temp);
 			        }
 			        ?>
 			</tr></table>	
-		
-			alpha<input type="range" id="bg_alpha" min=0 max=1 step="0.01" value=1 
-			onMouseMove="if (!flg_mousedown) return;  setBGColor(bg_col,this.value);"/>
-
+			alpha<input type="range" id="bg_alpha" min=0 max=1 step="0.01" value=1 onMouseMove="if (!flg_mousedown) return;  setBGColor(bg_col,this.value);"/>
 
 	    <script>
 						   var bg_col="rgb(0,0,0)";
@@ -576,10 +573,11 @@ $plist_64=base64_encode($plist_temp);
 					  	  });	
 					</script>
 					
+				
+<div id="gridControls" style="position:fixed">	
 					
-					
-					<a href="javaScript:toggleStats();">Stats</a>
-					<a href="javaScript:toggleGrid();">Grid</a> 
+					<a href="javaScript:toggleStats();">Stats</a><br>
+					<a href="javaScript:toggleGrid();">Grid</a><br>
 					
 					<input type="range" id="grid" name="grid" min="20" max="160" step="10" value="100" 
 					onMouseMove="
@@ -588,8 +586,8 @@ $plist_64=base64_encode($plist_temp);
 						$('#grid_disp').html(this.value+'px');
 						">
 					
-					<span id="grid_disp" >**</span> 
-			
+					<span id="grid_disp" >**</span><br> 
+		</div>	
 		<!--a href="javaScript:toggleDebug();">DebugOnScreen</a-->
 		<!--BG<input type="text" id="bg_color" value="#000000" placeholder="BGColor" 
 		     onMouseMove="alert('set color'); "> -->
@@ -710,13 +708,13 @@ $plist_64=base64_encode($plist_temp);
 	<?php 
 	foreach (array("BG","Water","Fire","FireWorks","Explosion","Meteor","Snow","Click","Smoke","Magic","Others") as $val) { 
 		
-		echo "<tr><td>";
+		echo "<tr><td style='border-top:1px solid white'>";
 		echo "<strong>".$val."</strong>";
-		echo "</td><td>";
+		echo "</td><td style='border-top:1px solid white'>";
 
 		$ary=explode("\n", trim(`ls plist/${val} | grep -i 'plist'`));
 		foreach ($ary as $val1){  ?>
-			<a href="javascript:getPlist('<?php echo "$val/$val1" ?>')" onMouseOver="prevParticle('<?php echo "$val/$val1"?>');" onMouseOut="prevEnd(); " ><?php echo preg_replace("/(.*?_)(.*)(\..*)/","$2",$val1) ?></a>
+			<a href="javascript:getPlist('<?php echo "$val/$val1" ?>')" onMouseOver="prevParticle('<?php echo "$val/$val1"?>');" onMouseOut="prevEnd(); " ><?php echo preg_replace("/(.*?_)(.*)(\..*)/","$2",$val1) ?></a><br>
 		<?php } ?>
 		</td><td>
 		 MultiEmitter 
@@ -1781,7 +1779,7 @@ $plist_64=base64_encode($plist_temp);
 </td></tr></table>
 
 
-
+<!--
 <div style="margin-left:10px;">
 	<a id="panelink_template" href="javascript:$('#plist_out').slideToggle(100);" style="font-size:80%;" >RealtimePList</a>
 	<div id="plist_out" style="display:none;">
@@ -1791,6 +1789,6 @@ $plist_64=base64_encode($plist_temp);
 		<pre id="p2dx_out" style="font-size:70%;margin-left:20px;"></pre>
 	</div>
 </div>
-
+-->
 </body>
 </html>
