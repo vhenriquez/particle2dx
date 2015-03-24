@@ -63,6 +63,12 @@ if (isset($_REQUEST['type'])) {
             header('Content-Disposition: Attachment; filename="'.$_REQUEST['png_filename'].$ext.'"');
             echo rawurldecode($_REQUEST['plist_xml']);
             exit;
+
+        case "cocos_plist_save":  //cocos2dx save
+	    file_put_contents("plist/Custom/" . $_REQUEST['png_filename'] . ".plist", rawurldecode($_REQUEST['plist_xml'])) ;
+	    header('Location: /');
+            exit;
+
    	
 		case "corona_json_dl":
         	$ext='.json';
@@ -622,7 +628,9 @@ $plist_64=base64_encode($plist_temp);
 	<strong><span class="headchar">T</span>emplate</strong></a>&nbsp;
 	<a id="panelink_template" href="javascript:toggleTopleftPane('import');"   style="font-size:140%;">
 	<strong><span class="headchar">E</span>xport</strong></a>&nbsp; 
-	
+	<a id="panelink_template" href="javascript:toggleTopleftPane('save');"   style="font-size:140%;">
+	<strong><span class="headchar">S</span>ave</strong></a>&nbsp; 
+
 	<a href="javascript:removeSlot(slot);">Remove</a> 
 	<a href="javascript:duplicateSlot(slot);">Duplicate</a>
 	<a href="javascript:getSnapshot();" >Snapshot</a>
@@ -702,11 +710,38 @@ $plist_64=base64_encode($plist_temp);
 			</td></tr>
 		</table>
 </div>
+<div id="topleft_pane_save" style=" display:none; " >	
+
+		<form name="form_post_save" method="post" >
+			<input type="hidden" name="type" id="type" />
+			<input type="hidden" name="p2dx_json" id="p2dx_json" />
+			<input type="hidden" name="plist_xml" id="plist_xml" />
+			<input type="hidden" name="png_dl64gz" id="png_dl64gz" />
+
+			filename<input type="text" name="png_filename" id="png_filename" value="particle_texture" 
+				onKeyUp=" $('a[id^=dl_link_]').html(this.value+'.png'); return " />
+				<br/><br/>
+		</form>
+	<table>
+			<tr><td >					
+				<a id="save" href="javascript:
+						document.form_post_save.type.value='cocos_plist_save';
+						document.form_post_save.plist_xml.value=encodeURIComponent(xml);
+						document.form_post_save.submit();" > 
+					<img src='logo_cocos_arrow.png' />
+				</a>
+			</td><td colspan=2 >	
+				<span style="font-size:120%;"><?php echo strGray('Save to Server') ?></span>
+			</td></tr>
+      </table>	
+</div>
 
 <div id="topleft_pane_template" style="display:none;" >
 	<table>
 	<?php 
-	foreach (array("BG","Water","Fire","FireWorks","Explosion","Meteor","Snow","Click","Smoke","Magic","Others") as $val) { 
+	
+	$dirs=explode("\n", trim(`ls plist/`));
+	foreach ($dirs as $val) { 
 		
 		echo "<tr><td style='border-top:1px solid white'>";
 		echo "<strong>".$val."</strong>";
