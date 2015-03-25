@@ -61,7 +61,13 @@ if (isset($_REQUEST['type'])) {
         	$ext='.plist';
             header("Content-Type: text/xml;");
             header('Content-Disposition: Attachment; filename="'.$_REQUEST['png_filename'].$ext.'"');
-            echo rawurldecode($_REQUEST['plist_xml']);
+            $plistContent = rawurldecode($_REQUEST['plist_xml']);
+            
+            // Transformation to make an easier export to cocos2d-x
+            $plistContent = preg_replace("/<key>sourcePositionx<\/key>\s+<real>\d+<\/real>\s+/", "<key>sourcePositionx</key>\n<real>0</real>\n", $plistContent);
+            $plistContent = preg_replace("/<key>sourcePositiony<\/key>\s+<real>\d+<\/real>\s+/", "<key>sourcePositiony</key>\n<real>0</real>\n", $plistContent);
+            
+            echo ($plistContent);
             exit;
 
         case "cocos_plist_save":  //cocos2dx save
@@ -73,13 +79,7 @@ if (isset($_REQUEST['type'])) {
 	   $orig = "plist/" . $_REQUEST['orig'];	
 	   $dest = "plist/" . $_REQUEST['dest'];	
 	   $result = rename($orig, $dest);
-	   if ($result) 
-		echo "<center>Rename/Move successful!</center>"; 
-	   else 
-		echo "<center>Problems renaming/moving file!</center>"; 
-	
-	   echo "<center><a href='/'>Reload</a></center>";
-
+	   header('Location: /');
            exit;
 
    	
@@ -166,8 +166,13 @@ if (isset($_REQUEST['type'])) {
 	.headchar {color: #5588cc;text-decoration: none; font-size:110%; font-weight:bold;}
 
 </style>
+<script>
+function init() {
+window.setTimeout(function(){toggleTopleftPane('template')}, 1500);
+}
+</script>
 </head>
-<body>
+<body onload="javascript:init()">
 
 <!-- facebook -->
 <div id="fb-root"></div>
@@ -677,7 +682,7 @@ $plist_64=base64_encode($plist_temp);
 	}
 </script>
 
-<div id="topleft_pane_import" style=" display:none; " >	
+<div id="topleft_pane_import" style="display:none;" >	
 
 	<a id="p2dx_export" href="javascript:
 							document.form_post_dl.type.value='p2dx_json';
@@ -737,7 +742,7 @@ $plist_64=base64_encode($plist_temp);
 			<input type="hidden" name="png_dl64gz" id="png_dl64gz" />
 
 			filename<input type="text" name="png_filename" id="png_filename" value="particle_texture" 
-				onKeyUp=" $('a[id^=dl_link_]').html(this.value+'.png'); return " />
+				 />
 				<br/><br/>
 				<input id="save" type="button" value="Save To Server" onclick="javascript:
 						document.form_post_save.type.value='cocos_plist_save';
@@ -769,7 +774,7 @@ $plist_64=base64_encode($plist_temp);
 	$dirs=explode("\n", trim(`ls plist/`));
 	foreach ($dirs as $val) { 
 		
-		echo "<tr><td style='border-top:1px solid white'>";
+		echo "<tr><td style='border-top:1px solid white;vertical-align:top'>";
 		echo "<strong>".$val."</strong>";
 		echo "</td><td style='border-top:1px solid white'>";
 
@@ -1195,7 +1200,7 @@ $plist_64=base64_encode($plist_temp);
 
 	</div><!-- pane_shape -->
 
-	<div id="topleft_pane_motion" >
+	<div id="topleft_pane_motion" style="display:none;">
 	
 		<div style="border-bottom:1px solid #444444;">
 			<h4>
