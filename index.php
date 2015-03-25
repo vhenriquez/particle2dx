@@ -168,6 +168,31 @@ if (isset($_REQUEST['type'])) {
 </style>
 </head>
 <body>
+<!-- Preload images --> 
+<div id="preload_layer" style="display:block">
+	<script type="text/javascript">
+		<!--//--><![CDATA[//><!--
+			var images = new Array()
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image()
+					images[i].src = preload.arguments[i]
+				}
+			}
+			preload(
+
+		<?php
+			$pngs= explode("\n",trim(`ls png/ | grep -i 'png'`));
+			foreach ($pngs as $val){
+				echo "'/png/$val',";
+			}
+			echo "'/png/$val'"; 
+		?>
+			)
+		//--><!]]>
+	</script>
+</div>
+
 
 <!-- facebook -->
 <div id="fb-root"></div>
