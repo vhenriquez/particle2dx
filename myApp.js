@@ -69,8 +69,8 @@ var MyLayer = cc.Layer.extend({
         prev_string.setVisible(false);
         		
 		//デフォルトエミッタを作成;
-		getPlist("meteor_me3.plist");
-		togglePane('template');//初期表示panel
+		getPlist("Meteor/meteor_me3.plist");
+		toggleTopleftPane('template');//初期表示panel
 	},
 	
 	//focusをcocosのcanvasの外に

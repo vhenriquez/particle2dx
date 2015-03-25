@@ -166,13 +166,8 @@ if (isset($_REQUEST['type'])) {
 	.headchar {color: #5588cc;text-decoration: none; font-size:110%; font-weight:bold;}
 
 </style>
-<script>
-function init() {
-window.setTimeout(function(){toggleTopleftPane('template')}, 1500);
-}
-</script>
 </head>
-<body onload="javascript:init()">
+<body>
 
 <!-- facebook -->
 <div id="fb-root"></div>
