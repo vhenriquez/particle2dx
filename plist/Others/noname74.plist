@@ -72,7 +72,7 @@
 <key>startColorVarianceRed</key>
 <integer>0</integer>
 <key>thumbnailFileName</key>
-<string>4A824B4E-6E12-4B64-8E04-9C3CC2D3B280</string>
+<string>047A7567-C9B5-4AAD-B4E3-E84FECDD8404</string>
 <key>finishColorRed</key>
 <integer>0</integer>
 <key>gravityx</key>
@@ -108,13 +108,11 @@
 <key>maxRadius</key>
 <integer>0</integer>
 <key>createdAt</key>
-<real>1392107967.969</real>
+<real>1424152498.493</real>
 <key>updatedAt</key>
-<real>1396525551.715</real>
-<key>yCoordFlipped</key>
-<integer>0</integer>
+<real>1424152498.493</real>
 <key>objectId</key>
-<string>52f9e1bf8b79592f5e8b4567</string>
+<string>54e2d7b28b79593a5b8b4568</string>
 <key>sourcePositionx</key>
 <real>320</real>
 <key>sourcePositiony</key>
