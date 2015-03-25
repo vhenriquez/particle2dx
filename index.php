@@ -898,9 +898,14 @@ $plist_64=base64_encode($plist_temp);
 	    </script>
     
 	</td></tr></table>   
-
-<table><tr><td style="vertical-align:top;">
-	</td><td style="vertical-align:top;">	
+Blend 
+			  <a id="blend_add"    href="javascript:emitter[slot].setBlendAdditive(true);  dumpToInputTag(slot);">Additive</a> 
+			  <a id="blend_normal" href="javascript:emitter[slot].setBlendAdditive(false); dumpToInputTag(slot);">Normal</a> 
+			  
+	
+	<hr>
+<div id="color_layer">
+<table><tr><td style="vertical-align:top;">		
 		<div id="start_color" >startcol</div>	
 		
 		<table id="palette" cellspacing=1 border=0 ><tr>
@@ -961,12 +966,76 @@ $plist_64=base64_encode($plist_temp);
 	   });
 	   
 	</script>
-	</td><td style="vertical-align:top;">
-									
-</td></tr></table>
-			  Blend 
-			  <a id="blend_add"    href="javascript:emitter[slot].setBlendAdditive(true);  dumpToInputTag(slot);">Additive</a> 
-			  <a id="blend_normal" href="javascript:emitter[slot].setBlendAdditive(false); dumpToInputTag(slot);">Normal</a> 
+	</td>
+	
+	<td style="vertical-align:top;padding:55px"></td>
+	<td style="vertical-align:top;">				
+		
+				<div id="end_color">endcolor</div>
+				<table id="palette_end" cellspacing=1 border=0 ><tr>
+			    <?php 
+			    for($i=3;$i<=15;$i=$i+3) { 
+			    	echo "<tr>";
+					for($j=3;$j<=15;$j=$j+3) { 
+						for($k=3;$k<=15;$k=$k+3) { 							    
+					?>
+					<td col="col_end" title="#<?php echo dechex($i*256+$j*16+$k);?>"  style="background-color:#<?php echo dechex($i*256+$j*16+$k);?>;width:8px;height:8px;font-size:6px;">&nbsp;
+					</td>
+					<?php  }
+				    } 
+				    echo "</tr>";
+		        } ?>
+		</tr></table>
+			<script>
+	   var palette_col;
+	   $("td[col=col_end]").bind("mouseover",function(){ 
+	   
+	   	  palette_col=$(this).css("background-color");
+	   	  $("#end_color").css("background-color",palette_col);
+			palette_col = palette_col.replace("rgb(","");
+			palette_col = palette_col.replace(")","");
+			p_ary = palette_col.split(",");
+	   	   col_3b= cc.c3b(p_ary[0],p_ary[1],p_ary[2]);
+	   	   col_4f=cc.c4FFromccc3B(col_3b);
+	   	   emitter[slot].setEndColor(col_4f);
+	   	   prev_string.setVisible(true);
+	   	   //emitter からテキストボックスへ
+	   	   dumpToInputTag(slot);
+	   });
+
+	   $("td[col=col_end]").bind("mousedown",function(){ 
+	   	  palette_col=$(this).css("background-color");
+	   	  $("#end_color").css("background-color",palette_col);
+			palette_col = palette_col.replace("rgb(","");
+			palette_col = palette_col.replace(")","");
+			p_ary = palette_col.split(",");
+	   	   col_3b= cc.c3b(p_ary[0],p_ary[1],p_ary[2]);
+	   	   col_4f=cc.c4FFromccc3B(col_3b);
+	   	   emitter[slot].setEndColor(col_4f);
+	   	   prev_string.setVisible(false);
+	   	   
+	   	   current_start_color=emitter[slot].getEndColor();
+	   	   //emitter からテキストボックスへ
+	   	   dumpToInputTag(slot);
+	   });
+
+	   $("td[col=col_end]").bind("mouseout",function(){ 
+	   	  palette_col=$(this).css("background-color");
+	   	  $("#end_color").css("background-color",palette_col);
+	   	   emitter[slot].setEndColor(current_start_color);
+	   	   prev_string.setVisible(false);
+	   	   //emitter からテキストボックスへ
+	   	   dumpToInputTag(slot);
+	   });
+	   
+	</script>
+
+	
+						
+		</td></tr>				
+
+</table>
+			  
 <table><tr><td>
 	<h3><span style="color:gray;">Start</span></h3>
 	
@@ -1163,14 +1232,8 @@ $plist_64=base64_encode($plist_temp);
 			</table>
 
 		</td></tr>
-		<tr><td style="vertical-align:top;">
-			</td><td style="vertical-align:top;">				
-		
-				<div id="end_color">endcolor</div>
-						
-		</td></tr>				
 		</table>
-
+</div> <!-- end color_layer -->
 
 	ColorVariance
 	<a id="cv_1" href="javascript:setColorInit(); dumpToInputTag();">0%</a> 
