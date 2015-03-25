@@ -67,7 +67,20 @@ if (isset($_REQUEST['type'])) {
         case "cocos_plist_save":  //cocos2dx save
 	    file_put_contents("plist/Custom/" . $_REQUEST['png_filename'] . ".plist", rawurldecode($_REQUEST['plist_xml'])) ;
 	    header('Location: /');
-            exit;
+	    exit;
+ 
+        case "cocos_plist_rename":  //cocos2dx save
+	   $orig = "plist/" . $_REQUEST['orig'];	
+	   $dest = "plist/" . $_REQUEST['dest'];	
+	   $result = rename($orig, $dest);
+	   if ($result) 
+		echo "<center>Rename/Move successful!</center>"; 
+	   else 
+		echo "<center>Problems renaming/moving file!</center>"; 
+	
+	   echo "<center><a href='/'>Reload</a></center>";
+
+           exit;
 
    	
 		case "corona_json_dl":
@@ -657,6 +670,11 @@ $plist_64=base64_encode($plist_temp);
 		$("div[id^=topleft_pane_]").hide();		
 		$("#topleft_pane_"+name).slideToggle(100);
 	}
+	function renameHelper(orig) {
+		document.getElementById("orig").value = orig;
+		document.getElementById("dest").value = orig;
+		toggleTopleftPane('move');
+	}
 </script>
 
 <div id="topleft_pane_import" style=" display:none; " >	
@@ -721,20 +739,28 @@ $plist_64=base64_encode($plist_temp);
 			filename<input type="text" name="png_filename" id="png_filename" value="particle_texture" 
 				onKeyUp=" $('a[id^=dl_link_]').html(this.value+'.png'); return " />
 				<br/><br/>
-		</form>
-	<table>
-			<tr><td >					
-				<a id="save" href="javascript:
+				<input id="save" type="button" value="Save To Server" onclick="javascript:
 						document.form_post_save.type.value='cocos_plist_save';
 						document.form_post_save.plist_xml.value=encodeURIComponent(xml);
-						document.form_post_save.submit();" > 
-					<img src='logo_cocos_arrow.png' />
-				</a>
-			</td><td colspan=2 >	
-				<span style="font-size:120%;"><?php echo strGray('Save to Server') ?></span>
-			</td></tr>
-      </table>	
+						document.form_post_save.submit();" />
+		</form>
 </div>
+
+<div id="topleft_pane_move" style=" display:none; " >	
+
+		<form name="form_post_move" method="post" >
+			<input type="hidden" name="type" id="type" />
+			Orig<input type="text" name="orig" id="orig" value="" />
+<br/>
+			Dest<input type="text" name="dest" id="dest" value="" />
+<br/>
+			<input id="move" type="button" value="Rename/Move" onclick="javascript:
+						document.form_post_move.type.value='cocos_plist_rename';
+						document.form_post_move.submit();" > 
+
+		</form>
+</div>
+
 
 <div id="topleft_pane_template" style="display:none;" >
 	<table>
@@ -749,7 +775,10 @@ $plist_64=base64_encode($plist_temp);
 
 		$ary=explode("\n", trim(`ls plist/${val} | grep -i 'plist'`));
 		foreach ($ary as $val1){  ?>
-			<a href="javascript:getPlist('<?php echo "$val/$val1" ?>')" onMouseOver="prevParticle('<?php echo "$val/$val1"?>');" onMouseOut="prevEnd(); " ><?php echo preg_replace("/(.*?_)(.*)(\..*)/","$2",$val1) ?></a><br>
+			<a href="javascript:getPlist('<?php echo "$val/$val1" ?>')" onMouseOver="prevParticle('<?php echo "$val/$val1"?>');" onMouseOut="prevEnd(); " >
+<?php echo preg_replace("/.plist/","",$val1) ?></a> 	
+<a id="panelink_template" href="javascript:renameHelper('<?php echo "$val/$val1" ?>');">[Move/Rename]</a>
+ <br>
 		<?php } ?>
 		</td><td>
 		 MultiEmitter 
