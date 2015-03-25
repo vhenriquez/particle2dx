@@ -191,6 +191,7 @@ if (isset($_REQUEST['type'])) {
 			)
 
 <?php
+/*
 	$dirs=explode("\n", trim(`ls plist/`));
 	foreach ($dirs as $val) { 
 		$ary=explode("\n", trim(`ls plist/${val} | grep -i 'plist'`));
@@ -198,6 +199,7 @@ if (isset($_REQUEST['type'])) {
 		 echo "$.ajax({async:false, type: 'GET', url: '/plist/$val/$val1'});\n";
 		}
 	}
+*/
 ?>
 
 		//--><!]]>
