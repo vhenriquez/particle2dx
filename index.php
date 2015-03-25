@@ -172,24 +172,41 @@ if (isset($_REQUEST['type'])) {
 <div id="preload_layer" style="display:block">
 	<script type="text/javascript">
 		<!--//--><![CDATA[//><!--
-			var images = new Array()
-			function preload() {
-				for (i = 0; i < preload.arguments.length; i++) {
-					images[i] = new Image()
-					images[i].src = preload.arguments[i]
-				}
-			}
-			preload(
 
+ var i = 0,
+        max = 0,
+        o = null,
+ 
+        // list of stuff to preload
+        preload = [
 		<?php
 			$pngs= explode("\n",trim(`ls png/ | grep -i 'png'`));
 			foreach ($pngs as $val){
-				echo "'/png/$val',";
+				echo "'/png/$val',\n";
 			}
-			echo "'/png/$val'"; 
+			$dirs=explode("\n", trim(`ls plist/`));
+			foreach ($dirs as $val) { 
+			$ary=explode("\n", trim(`ls plist/${val} | grep -i 'plist'`));
+				foreach ($ary as $val1){  
+					echo "'/plist/$val/$val1',\n";
+				}
+			}
+			echo "''";
 		?>
-			)
-		//--><!]]>
+
+        ],
+ 
+    for (i = 0, max = preload.length; i < max; i += 1) {
+        
+        o = document.createElement('object');
+        o.data = preload[i];
+        o.width  = 0;
+        o.height = 0;
+	document.preload_layer.appendChild(o);
+    }
+
+
+//--><!]]>
 	</script>
 </div>
 
